@@ -425,3 +425,5 @@ C:\Users\Houst\workspace\csharp\DogGo2\DogGo2\obj\Debug\net5.0\DogGo2.genruntime
 C:\Users\Houst\workspace\csharp\DogGo2\DogGo2\obj\Debug\net5.0\ref\DogGo2.dll
 C:\Users\Houst\workspace\csharp\DogGo2\DogGo2\obj\Debug\net5.0\Razor\Views\Walkers\Index.cshtml.g.cs
 C:\Users\Houst\workspace\csharp\DogGo2\DogGo2\obj\Debug\net5.0\Razor\Views\Walkers\Details.cshtml.g.cs
+C:\Users\Houst\workspace\csharp\DogGo2\DogGo2\obj\Debug\net5.0\Razor\Views\Owners\Index.cshtml.g.cs
+C:\Users\Houst\workspace\csharp\DogGo2\DogGo2\obj\Debug\net5.0\Razor\Views\Owners\Details.cshtml.g.cs

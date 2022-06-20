@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace DogGo2.Repositories
 {
-    public interface IOwnerRepository
+    public interface IWalkerRepository
     {
-        List<Owner> GetAllOwners();
-        Owner GetOwnerById(int id);
+        List<Walker> GetAllWalkers();
+        Walker GetWalkerById(int id);
     }
 }
