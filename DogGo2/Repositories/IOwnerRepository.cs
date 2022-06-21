@@ -4,9 +4,12 @@ using System.Collections.Generic;
 
 namespace DogGo2.Repositories
 {
-    public interface IWalkerRepository
+    public interface IOwnerRepository
     {
-        List<Walker> GetAllWalkers();
-        Walker GetWalkerById(int id);
+        List<Owner> GetAllOwners();
+        Owner GetOwnerById(int id);
+        void AddOwner(Owner owner);
+        public void UpdateOwner(Owner owner);
+        public void DeleteOwner(int ownerId);
     }
 }
