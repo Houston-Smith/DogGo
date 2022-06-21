@@ -45,15 +45,23 @@ namespace DogGo2.Repositories
                                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                                 Name = reader.GetString(reader.GetOrdinal("Name")),
                                 OwnerId = reader.GetInt32(reader.GetOrdinal("OwnerId")),
-                                Breed = reader.GetString(reader.GetOrdinal("Breed")),
-                                Notes = reader.GetString(reader.GetOrdinal("Notes")),
-                                ImageUrl = reader.GetString(reader.GetOrdinal("ImageUrl"))
+                                Breed = reader.GetString(reader.GetOrdinal("Breed"))
                             };
 
+                            if (!reader.IsDBNull(reader.GetOrdinal("Notes")))
+                                dog.Notes = reader.GetString(reader.GetOrdinal("Notes"));
+                            else dog.Notes = "None";
+
+                            if (!reader.IsDBNull(reader.GetOrdinal("ImageUrl")))
+                                    dog.ImageUrl = reader.GetString(reader.GetOrdinal("ImageUrl"));
+                            else dog.ImageUrl = "None";
+
                             dogs.Add(dog);
-                        }
+                        };
 
                         return dogs;
+                        
+
                     }
                 }
             }
@@ -84,9 +92,15 @@ namespace DogGo2.Repositories
                                 Name = reader.GetString(reader.GetOrdinal("Name")),
                                 OwnerId = reader.GetInt32(reader.GetOrdinal("OwnerId")),
                                 Breed = reader.GetString(reader.GetOrdinal("Breed")),
-                                Notes = reader.GetString(reader.GetOrdinal("Notes")),
-                                ImageUrl = reader.GetString(reader.GetOrdinal("ImageUrl"))
                             };
+
+                            if (!reader.IsDBNull(reader.GetOrdinal("Notes")))
+                                dog.Notes = reader.GetString(reader.GetOrdinal("Notes"));
+                            else dog.Notes = "None";
+
+                            if (!reader.IsDBNull(reader.GetOrdinal("ImageUrl")))
+                                dog.ImageUrl = reader.GetString(reader.GetOrdinal("ImageUrl"));
+                            else dog.ImageUrl = "None";
 
                             return dog;
                         }
@@ -115,8 +129,19 @@ namespace DogGo2.Repositories
                     cmd.Parameters.AddWithValue("@name", dog.Name);
                     cmd.Parameters.AddWithValue("@ownerId", dog.OwnerId);
                     cmd.Parameters.AddWithValue("@breed", dog.Breed);
-                    cmd.Parameters.AddWithValue("@notes", dog.Notes);
-                    cmd.Parameters.AddWithValue("@imageUrl", dog.ImageUrl);
+                   
+                    if (dog.Notes != null)
+                        cmd.Parameters.AddWithValue("@notes", dog.Notes);
+                    else
+                        cmd.Parameters.AddWithValue("@notes", "None");
+
+
+
+                    if (dog.ImageUrl != null)
+                        cmd.Parameters.AddWithValue("@imageUrl", dog.ImageUrl);
+                    else
+                        cmd.Parameters.AddWithValue("@imageUrl", "None");
+
 
                     int id = (int)cmd.ExecuteScalar();
 
