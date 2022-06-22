@@ -4,7 +4,7 @@ using DogGo2.Repositories;
 using DogGo2.Models;
 using System.Collections.Generic;
 using System;
-using DogGo.Models.ViewModels;
+using DogGo2.Models.ViewModels;
 
 namespace DogGo2.Controllers
 {
@@ -47,7 +47,15 @@ namespace DogGo2.Controllers
         // GET: WalkersController/Create
         public ActionResult Create()
         {
-            return View();
+            List<Neighborhood> neighborhoods = _neighborhoodRepo.GetAll();
+
+            OwnerFormViewModel vm = new OwnerFormViewModel()
+            {
+                Owner = new Owner(),
+                Neighborhoods = neighborhoods
+            };
+
+            return View(vm);
         }
 
 
@@ -141,16 +149,18 @@ namespace DogGo2.Controllers
         private readonly IOwnerRepository _ownerRepo;
         private readonly IDogRepository _dogRepo;
         private readonly IWalkerRepository _walkerRepo;
-
+        private readonly INeighborhoodRepository _neighborhoodRepo;
 
         public OwnersController(
             IOwnerRepository ownerRepository,
             IDogRepository dogRepository,
-            IWalkerRepository walkerRepository)
+            IWalkerRepository walkerRepository,
+            INeighborhoodRepository neighborhoodRepository)
         {
             _ownerRepo = ownerRepository;
             _dogRepo = dogRepository;
             _walkerRepo = walkerRepository;
+            _neighborhoodRepo = neighborhoodRepository;
         }
     }
 }

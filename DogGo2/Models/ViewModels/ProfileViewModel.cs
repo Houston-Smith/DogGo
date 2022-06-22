@@ -1,8 +1,8 @@
-﻿using DogGo2.Models;
+﻿
 using System;
 using System.Collections.Generic;
 
-namespace DogGo.Models.ViewModels
+namespace DogGo2.Models.ViewModels
 {
     public class ProfileViewModel
     {
